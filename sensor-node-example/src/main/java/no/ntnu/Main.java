@@ -1,7 +1,7 @@
 package no.ntnu;
 
 /**
- * MAin entrypoint for the application
+ * Main entrypoint for the application
  */
 public class Main {
     /**
@@ -11,7 +11,11 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Starting the application...");
         App app = new App();
-        app.run();
+        try {
+            app.run();
+        } catch (Exception e) {
+            System.out.println("Oops: " + e.getMessage());
+        }
         System.out.println("Application finished");
     }
 }
