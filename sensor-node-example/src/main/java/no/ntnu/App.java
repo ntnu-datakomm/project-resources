@@ -1,5 +1,7 @@
 package no.ntnu;
 
+import no.ntnu.sensors.Sensor;
+
 /**
  * Represents the whole application, including the logic.
  */

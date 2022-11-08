@@ -1,9 +1,13 @@
 package no.ntnu;
 
+import no.ntnu.sensors.Sensor;
+import no.ntnu.sensors.TemperatureSensor;
+
 /**
  * Manages a collection of all available sensors
  */
 public class SensorProvider {
+    private final TemperatureSensor temperatureSensor = new TemperatureSensor();
     private SensorProvider() {
     }
 
@@ -21,6 +25,6 @@ public class SensorProvider {
      * @return Temperature sensor instance
      */
     public Sensor getTemperatureSensor() {
-        return null;
+        return temperatureSensor;
     }
 }

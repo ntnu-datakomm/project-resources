@@ -1,14 +1,12 @@
-package no.ntnu;
+package no.ntnu.sensors;
 
 /**
  * Represents (or imitates) one physical sensor on the platform
  */
-public class Sensor {
+public interface Sensor {
     /**
      * Read the current value of the sensor
      * @return The current sensor value
      */
-    public double readValue() {
-        return 22.3;
-    }
+    public double readValue();
 }
