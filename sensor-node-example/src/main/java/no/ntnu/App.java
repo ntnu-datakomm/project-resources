@@ -51,7 +51,7 @@ public class App {
     }
 
     private void sendDataToServer() {
-        // TODO - implement
+        // TODO - implement sensor data sending to the server
         System.out.println("Sending data to server:");
         System.out.println("  temp: " + lastTemperatureReading + "C");
         System.out.println("  humi: " + lastHumidityReading + "%");
