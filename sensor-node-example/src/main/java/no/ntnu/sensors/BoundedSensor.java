@@ -5,9 +5,9 @@ import java.math.RoundingMode;
 import java.util.Random;
 
 /**
- * Imitates a temperature sensor, providing realistic temperatures
+ * Provides sensor values within a given range
  */
-public class TemperatureSensor implements Sensor {
+public abstract class BoundedSensor implements Sensor {
     private double currentValue;
     private final double min;
     private final double max;
@@ -15,13 +15,13 @@ public class TemperatureSensor implements Sensor {
     private static final Random randomGenerator = new Random();
 
     /**
-     * Create a temperature sensor which will provide values in a given range
+     * Create a sensor which will provide values in a given range
      *
-     * @param initialValue The initial value for the sensor (the initial temperature)
-     * @param minValue     minimum allowed temperature. The temperature value will never be below this
-     * @param maxValue     maximum allowed temperature. The temperature value will never be above this
+     * @param initialValue The initial value for the sensor
+     * @param minValue     minimum allowed value
+     * @param maxValue     maximum allowed value
      */
-    public TemperatureSensor(double initialValue, double minValue, double maxValue) {
+    public BoundedSensor(double initialValue, double minValue, double maxValue) {
         currentValue = initialValue;
         min = minValue;
         max = maxValue;
@@ -43,7 +43,7 @@ public class TemperatureSensor implements Sensor {
     }
 
     /**
-     * Generate a random delta, which is a small fraction of the allowed temperature range.
+     * Generate a random delta, which is a small fraction of the allowed value range.
      *
      * @return The delta value. Note: it can be negative
      */
@@ -63,5 +63,4 @@ public class TemperatureSensor implements Sensor {
                 .setScale(1, RoundingMode.HALF_UP)
                 .doubleValue();
     }
-
 }

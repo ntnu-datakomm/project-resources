@@ -8,11 +8,14 @@ import no.ntnu.sensors.Sensor;
 public class App {
     private static final long SLEEP_DURATION_MS = 2000;
     double lastTemperatureReading;
+    double lastHumidityReading;
 
     Sensor temperatureSensor;
+    Sensor humiditySensor;
 
     /**
      * Run the application, does not return, except if something goes wrong.
+     *
      * @throws IllegalStateException If something went wrong during the process
      */
     public void run() throws IllegalStateException {
@@ -35,22 +38,23 @@ public class App {
         if (temperatureSensor == null) {
             throw new IllegalStateException("Temperature sensor not found");
         }
+        humiditySensor = sensorProvider.getHumiditySensor();
+        if (humiditySensor == null) {
+            throw new IllegalStateException("Humidity sensor not found");
+        }
     }
 
     private void readAllSensors() {
         System.out.println("Reading sensor data...");
-        lastTemperatureReading = readTemperatureSensor();
-//        lastHumidityReading = readHumiditySensor();
-    }
-
-    private double readTemperatureSensor() {
-        return temperatureSensor.readValue();
+        lastTemperatureReading = temperatureSensor.readValue();
+        lastHumidityReading = humiditySensor.readValue();
     }
 
     private void sendDataToServer() {
         // TODO - implement
         System.out.println("Sending data to server:");
         System.out.println("  temp: " + lastTemperatureReading + "C");
+        System.out.println("  humi: " + lastHumidityReading + "%");
         System.out.println("");
     }
 

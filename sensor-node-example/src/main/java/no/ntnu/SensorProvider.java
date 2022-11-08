@@ -1,17 +1,15 @@
 package no.ntnu;
 
+import no.ntnu.sensors.RoomHumiditySensor;
 import no.ntnu.sensors.Sensor;
-import no.ntnu.sensors.TemperatureSensor;
+import no.ntnu.sensors.RoomTemperatureSensor;
 
 /**
  * Manages a collection of all available sensors
  */
 public class SensorProvider {
-    private static final double NORMAL_ROOM_TEMPERATURE = 23.3;
-    private static final double MIN_ROOM_TEMPERATURE = 18;
-    private static final double MAX_ROOM_TEMPERATURE = 26;
-    private final TemperatureSensor temperatureSensor = new TemperatureSensor(NORMAL_ROOM_TEMPERATURE,
-            MIN_ROOM_TEMPERATURE, MAX_ROOM_TEMPERATURE);
+    private final RoomTemperatureSensor temperatureSensor = new RoomTemperatureSensor();
+    private final RoomHumiditySensor humiditySensor = new RoomHumiditySensor();
 
     private SensorProvider() {
     }
@@ -32,5 +30,14 @@ public class SensorProvider {
      */
     public Sensor getTemperatureSensor() {
         return temperatureSensor;
+    }
+
+    /**
+     * Get access to the humidity sensor on the platform
+     *
+     * @return Humidity sensor instance
+     */
+    public Sensor getHumiditySensor() {
+        return humiditySensor;
     }
 }
